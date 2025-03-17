@@ -1,7 +1,7 @@
 # Spanning Tree Projects 
 ### STP, RSTP, PVST+, Port-Security, Guard Root, BPDU
 
-![STP](images/1.STP.png)
+![STP](Images/1.STP.png)
 ## Overview
 We will build a network with three switches connected in a triangle topology and configure different Spanning Tree Protocol versions:
 
@@ -100,11 +100,11 @@ SW# show spanning-tree detail
 ```
 **Ports**
 
-![Ports](images/Ports.png)
+![Ports](Images/Ports.png)
 
 **Root Bridge**
 
-![RB](images/RB.png)
+![RB](Images/RB.png)
 
 
 **Step 4: Set Root Bridge (SW1 as Root)**
@@ -125,7 +125,7 @@ SW1(config)#spanning-tree vlan 1 priority 0
 ```
 SW1# show spanning-tree
 ```
-![NRB](images/New_RB.png)
+![NRB](Images/New_RB.png)
 
 **Return**
 ```
@@ -136,7 +136,7 @@ SW1(config)#spanning-tree vlan 1 priority 32768
 SW3 #sh spanning-tree 
 ```
 
-![RBSW3](images/RBSW3.png)
+![RBSW3](Images/RBSW3.png)
 
 
 
@@ -173,7 +173,7 @@ SW# show spanning-tree
 This setup includes **PCs(2x) connected to access ports**, allowing you to configure **PortFast and additional STP security features.**
 
 
-![ED](images/ED.png)
+![ED](Images/ED.png)
 
 ## 1. Enabling PortFast, Disable all unused ports and Testing It
 
@@ -281,7 +281,7 @@ shutdown
 **For the trunk ports between switches, you need to enable Root Guard to prevent any non-root bridge from becoming the Root Bridge:**
 **My RB is SW3:**
 
-![RG](images/RD.png)
+![RG](Images/RD.png)
 ```
 SW1(config)# interface f0/7
 SW1(config-if-range)# spanning-tree guard root
@@ -299,7 +299,7 @@ If Root Guard is active, the port remains Forwarding. If it receives an unexpect
 
  Add switch on int f0/7
  
-![RG](images/Rogue.png)
+![RG](Images/Rogue.png)
  
 ```
 Rogue(config)# spanning-tree vlan 1 priority 0
@@ -341,7 +341,7 @@ If PortFast is enabled, the port should be in Forwarding immediately after conne
 + Connect a PC to F0/5 or F0/6.
 + Run a ping (192.168.10.12 from PC 1 and 192.168.10.11 from PC 2) test immediately after connecting to verify that there’s no delay in link activation.
 
-![PF](images/Portfast.png)
+![PF](Images/Portfast.png)
 
 
 ### Configure BPDU Guard on PortFast ports (F0/5-6)
@@ -374,7 +374,7 @@ If a BPDU is received, the port enters err-disabled mode.
 BPDU(config)# interface f0/1
 BPDU(config-if)# switchport mode trunk
 ```
-![BPDU](images/BPDU.png)
+![BPDU](Images/BPDU.png)
 ```
 SW2#%SPANTREE-2-BLOCK_BPDUGUARD: Received BPDU on port FastEthernet0/6 with BPDU Guard enabled. Disabling port.
 
@@ -391,7 +391,7 @@ SW2#%SPANTREE-2-BLOCK_BPDUGUARD: Received BPDU on port FastEthernet0/6 with BPDU
 SW2# show interfaces status | include err-disabled
 ```
 
-![BPDU](images/Interfaces.png)
+![BPDU](Images/Interfaces.png)
 
 + Recover the port by shutting it down and re-enabling:
 ```
@@ -400,11 +400,11 @@ SW2(config-if)#no switchport mode trunk
 SW2(config-if)# shutdown
 SW2(config-if)# no shutdown
 ```
-![REPAIR](images/RepairInt.png)
+![REPAIR](Images/RepairInt.png)
 
 ## Port Security Configuration
 
-![PS](images/PS.png)
+![PS](Images/PS.png)
 
 Here’s how you can configure Port Security on your switch ports (e.g., ports 1-24) for end devices:
 
@@ -420,7 +420,7 @@ SW3(config-if-range)# switchport port-security mac-address sticky
 ```
 + Connect another PC
 
-![PS](images/Port-security.png)
+![PS](Images/Port-security.png)
 
 **Explanation of the Commands:**
 
@@ -454,7 +454,7 @@ Step 1: Change STP Mode to RSTP (on all switches)
 SW(config)# spanning-tree mode rapid-pvst
 ```
 
-![RSTP](images/RSTP.png)
+![RSTP](Images/RSTP.png)
 
 ### Verifying RSTP (Rapid Spanning Tree Protocol)
 
@@ -536,7 +536,7 @@ SW# show spanning-tree vlan 30
 ```
 + Each VLAN should have a different Root Bridge if configured properly.
 
-![VLAN](images/VLAN.png)
+![VLAN](Images/VLAN.png)
 
 
 
