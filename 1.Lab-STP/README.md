@@ -537,18 +537,3 @@ SW# show spanning-tree vlan 30
 + Each VLAN should have a different Root Bridge if configured properly.
 
 ![VLAN](Images/VLAN.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
