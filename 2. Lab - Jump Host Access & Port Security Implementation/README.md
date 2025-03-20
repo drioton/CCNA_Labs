@@ -1,11 +1,41 @@
-# CCNA Enterprise Lab 
+# 2. Lab CCNA : Jump Host Access & Port Security Implementation
 
 This lab simulates a network with redundant links, utilizing PVSTP (Per-VLAN Spanning Tree Protocol) to prevent loops.\
 Router R1 acts as a jump host, providing SSH access to other devices.\
 Router R2 delivers DHCP, DNS, and TFTP services.\ 
 Switches CS1, AS1, and AS2 are configured with VLANs, OSPF, PortFast, and Port Security.\
 A redundant link between AS1 and AS2 is added to demonstrate PVSTP functionality.
-
+```
+ +---------------+
+                                  |    Internet   |
+                                  +---------------+
+                                         |
+                                         | 203.0.113.0/30
+                                         |
+                                  +---------------+
+                                  |      R2       | (DHCP, DNS, TFTP)
+                                  +---------------+
+                                         | 203.0.113.1/30
+                                         |
+                                  +---------------+
+                                  |      R1       | (Jump Host, ROAS)
+                                  +---------------+
+                                         | GigabitEthernet0/0
+                                         |
+                                  +---------------+
+                                  |      CS1      | (Core Switch)
+                                  +---------------+
+                                   /       \
+                                  /         \ GigabitEthernet0/2, GigabitEthernet0/3
+                                 /           \
+                        +---------------+     +---------------+
+                        |      AS1      |-----|      AS2      | (Access Switches)
+                        +---------------+     +---------------+
+                       / | | | | \           / | | | | \
+                      /  | | | |  \         /  | | | |  \
+                     /   | | | |   \       /   | | | |   \
+            PC1(VLAN10) PC2(VLAN20) PC3(VLAN30) PC4(VLAN40) Printer(VLAN60)
+```
 Lab Topology:
 
     R1 (Jump Host, ROAS)
