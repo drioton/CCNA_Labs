@@ -1,5 +1,7 @@
 # 2. Lab CCNA : Jump Host Access & Port Security Implementation
 
+# Unverified configuration – drafted from memory, not tested yet.
+
 This lab simulates a network with redundant links, utilizing PVSTP (Per-VLAN Spanning Tree Protocol) to prevent loops.\
 Router R1 acts as a jump host, providing SSH access to other devices.\
 Router R2 delivers DHCP, DNS, and TFTP services.\ 
